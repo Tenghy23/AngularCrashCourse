@@ -73,5 +73,7 @@ point.X = 10;
 point.draw();
 */
 var component = new like_component_1.LikeComponent(10, true);
+// component.likesCount = 2;
+// component.isSelected = false;
 component.onClick();
 console.log("likesCount: ".concat(component.likesCount, ", isSelected: ").concat(component.isSelected));
