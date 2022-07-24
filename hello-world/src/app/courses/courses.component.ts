@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CoursesService } from './courses.service';
 
-/* @Component is called a decorator function */
+// @Component is called a decorator function
+// component files are mainly used to display services
 @Component({
   selector: 'courses',
   template: `
-    <h2>{{ getTitle() }}<h2>
+    <h2>{{ title }}</h2>
     <ul>
       <!-- DOM refers to object/nodes that represent the page -->
       <!-- directives are used to manipulate the DOM -->
@@ -18,19 +20,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./courses.component.scss']
 })
 
-/* pascal Naming convention, this is how we declare
-a class */
-export class CoursesComponent implements OnInit {
+// pascal Naming convention, this is how we declare a class
+export class CoursesComponent {
+    title = "List of courses";
+    courses;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  title = "List of Courses";
-  courses = ["course1", "course2", "course3"];
-
-  getTitle() {
-    return this.title;
-  }
+    // by passing in service, we apply dependency injection
+    constructor(service: CoursesService) {
+      this.courses = service.getCourses();
+    }
 }
